@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import AudioElement from './components/Drum';
+import VideoBackground from './components/VideoBackground';
 
 class App extends Component {
   render() {
@@ -17,6 +18,7 @@ class App extends Component {
     ];
     return (
       <div className="App">
+        <VideoBackground />
         <div className="wrapper">
           <h1>Drum Machine</h1>
           <div className="drums">
