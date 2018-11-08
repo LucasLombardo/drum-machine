@@ -14,6 +14,14 @@ import tink from '../assets/sounds/tink.wav';
 import tom from '../assets/sounds/tom.wav';
 
 export default class AudioElement extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { isPressed: false };
+
+    this.playAudio = this.playAudio.bind(this);
+    this.drumbtn = React.createRef();
+  }
+
   componentDidMount() {
     document.addEventListener('keypress', (e) => {
       const key = e.which || e.keyCode;
@@ -39,11 +47,24 @@ export default class AudioElement extends Component {
       tom,
     };
     new Audio(drums[this.props.drum]).play();
+    this.setState(state => ({
+      isPressed: true,
+    }));
+    setTimeout(() => {
+      this.setState(state => ({
+        isPressed: false,
+      }));
+    }, 150);
   }
 
   render() {
     return (
-      <button className="drum" type="button" onClick={() => this.playAudio()}>
+      <button
+        className={this.state.isPressed ? 'drum pressed' : 'drum'}
+        type="button"
+        onClick={this.playAudio}
+        ref={this.drumbtn}
+      >
         {this.props.drum}
         <br />({this.props.keybind})
       </button>
