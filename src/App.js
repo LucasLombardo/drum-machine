@@ -6,15 +6,15 @@ import VideoBackground from './components/VideoBackground';
 class App extends Component {
   render() {
     const drums = [
-      'boom',
-      'clap',
-      'hihat',
-      'kick',
-      'openhat',
-      'ride',
-      'snare',
-      'tink',
-      'tom',
+      ['boom', 'Q'],
+      ['clap', 'W'],
+      ['hihat', 'E'],
+      ['kick', 'A'],
+      ['openhat', 'S'],
+      ['ride', 'D'],
+      ['snare', 'Z'],
+      ['tink', 'X'],
+      ['tom', 'C'],
     ];
     return (
       <div className="App">
@@ -23,7 +23,7 @@ class App extends Component {
           <h1>Drum Machine</h1>
           <div className="drums">
             {drums.map(drum => (
-              <AudioElement drum={drum} />
+              <AudioElement drum={drum[0]} keybind={drum[1]} />
             ))}
           </div>
         </div>

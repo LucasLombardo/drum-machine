@@ -14,11 +14,19 @@ import tink from '../assets/sounds/tink.wav';
 import tom from '../assets/sounds/tom.wav';
 
 export default class AudioElement extends Component {
-  static defaultProps = {
-    drum: 'boom',
-  };
+  componentDidMount() {
+    document.addEventListener('keypress', (e) => {
+      const key = e.which || e.keyCode;
+      if (
+        key === this.props.keybind.charCodeAt(0)
+        || key === this.props.keybind.toLowerCase().charCodeAt(0)
+      ) {
+        this.playAudio();
+      }
+    });
+  }
 
-  render() {
+  playAudio() {
     const drums = {
       boom,
       clap,
@@ -30,15 +38,20 @@ export default class AudioElement extends Component {
       tink,
       tom,
     };
-    const playAudio = () => new Audio(drums[this.props.drum]).play();
+    new Audio(drums[this.props.drum]).play();
+  }
+
+  render() {
     return (
-      <button className="drum" type="button" onClick={() => playAudio()}>
+      <button className="drum" type="button" onClick={() => this.playAudio()}>
         {this.props.drum}
+        <br />({this.props.keybind})
       </button>
     );
   }
 }
 
 AudioElement.propTypes = {
-  drum: PropTypes.string,
+  drum: PropTypes.string.isRequired,
+  keybind: PropTypes.string.isRequired,
 };
