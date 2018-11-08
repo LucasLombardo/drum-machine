@@ -7,6 +7,8 @@
 
 .wrapper {
   width: 100%;
+  color: rgba(255, 255, 255, 0.8);
+  letter-spacing: 1px;
 }
 .wrapper h1 {
   margin: 0 0 20px 0;
