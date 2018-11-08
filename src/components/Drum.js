@@ -1,6 +1,7 @@
 /* eslint jsx-a11y/media-has-caption: 0 */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import './Drum.css';
 
 import boom from '../assets/sounds/boom.wav';
 import clap from '../assets/sounds/clap.wav';
@@ -31,11 +32,9 @@ export default class AudioElement extends Component {
     };
     const playAudio = () => new Audio(drums[this.props.drum]).play();
     return (
-      <div>
-        <button type="button" onClick={() => playAudio()}>
-          {this.props.drum}
-        </button>
-      </div>
+      <button className="drum" type="button" onClick={() => playAudio()}>
+        {this.props.drum}
+      </button>
     );
   }
 }

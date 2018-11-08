@@ -17,10 +17,14 @@ class App extends Component {
     ];
     return (
       <div className="App">
-        <h1>Drum Machine</h1>
-        {drums.map(drum => (
-          <AudioElement drum={drum} />
-        ))}
+        <div className="wrapper">
+          <h1>Drum Machine</h1>
+          <div className="drums">
+            {drums.map(drum => (
+              <AudioElement drum={drum} />
+            ))}
+          </div>
+        </div>
       </div>
     );
   }
