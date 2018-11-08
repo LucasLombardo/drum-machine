@@ -23,7 +23,7 @@ class App extends Component {
           <h1>Drum Machine</h1>
           <div className="drums">
             {drums.map(drum => (
-              <AudioElement drum={drum[0]} keybind={drum[1]} />
+              <AudioElement drum={drum[0]} keybind={drum[1]} key={drum[0]} />
             ))}
           </div>
         </div>
